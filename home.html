@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>City Guide</title>
+
+  <!-- Bootstrap 5 -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff !important;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      margin-left: 15px;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #ffc107 !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.6)
+        ),
+        url("https://images.unsplash.com/photo-1480714378408-67cf0d13bc1?q=80&w=1600&auto=format&fit=crop")
+          center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .search-box {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-weight: 700;
+      color: #222;
+    }
+
+    /* Cards */
+    .guide-card {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: 0.4s;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .guide-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .guide-card img {
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .guide-card .card-body {
+      padding: 25px;
+    }
+
+    .guide-card h5 {
+      font-weight: 700;
+    }
+
+    /* Features */
+    .feature-box {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 15px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .feature-box:hover {
+      background: #0d6efd;
+      color: white;
+    }
+
+    .feature-box i {
+      font-size: 45px;
+      margin-bottom: 20px;
+      color: #0d6efd;
+    }
+
+    .feature-box:hover i {
+      color: white;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(to right, #0d6efd, #0046b3);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #ccc;
+      padding: 25px 0;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">CityGuide</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Destinations</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hotels</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Restaurants</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Discover Your Perfect City</h1>
+      <p>
+        Explore top attractions, restaurants, hotels, and hidden gems
+        around the world.
+      </p>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="search-box">
+            <div class="row g-2">
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Search city, attraction, hotel..."
+                />
+              </div>
+
+              <div class="col-md-3">
+                <button class="btn btn-primary btn-lg w-100">
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Popular Destinations -->
+  <section class="py-5">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Popular Destinations</h2>
+        <p class="text-muted">
+          Explore trending cities loved by travelers.
+        </p>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="card guide-card">
+            <img
+              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"
+              class="card-img-top"
+              alt=""
+            />
+
+            <div class="card-body">
+              <h5>Paris</h5>
+              <p class="text-muted">
+                Experience romance, art, fashion, and world-famous landmarks.
+              </p>
+
+              <a href="#" class="btn btn-outline-primary">
+                Explore
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card guide-card">
+            <img
+              src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1200&auto=format&fit=crop"
+              class="card-img-top"
+              alt=""
+            />
+
+            <div class="card-body">
+              <h5>Tokyo</h5>
+              <p class="text-muted">
+                Discover futuristic city life mixed with ancient traditions.
+              </p>
+
+              <a href="#" class="btn btn-outline-primary">
+                Explore
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card guide-card">
+            <img
+              src="https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?q=80&w=1200&auto=format&fit=crop"
+              class="card-img-top"
+              alt=""
+            />
+
+            <div class="card-body">
+              <h5>New York</h5>
+              <p class="text-muted">
+                Enjoy iconic attractions, nightlife, and vibrant culture.
+              </p>
+
+              <a href="#" class="btn btn-outline-primary">
+                Explore
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-5 bg-light">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Why Choose CityGuide?</h2>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="feature-box">
+            <i class="bi bi-geo-alt-fill"></i>
+            <h5>Top Attractions</h5>
+            <p>
+              Find must-visit places and hidden gems in every city.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-box">
+            <i class="bi bi-star-fill"></i>
+            <h5>Verified Reviews</h5>
+            <p>
+              Read trusted reviews from travelers worldwide.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-box">
+            <i class="bi bi-building"></i>
+            <h5>Best Hotels</h5>
+            <p>
+              Discover premium stays at affordable prices.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="fw-bold mb-3">
+        Start Your Journey Today
+      </h2>
+
+      <p class="mb-4">
+        Join thousands of travelers exploring the world with CityGuide.
+      </p>
+
+      <a href="#" class="btn btn-light btn-lg px-4">
+        Get Started
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="mb-0">
+        © 2026 CityGuide. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
